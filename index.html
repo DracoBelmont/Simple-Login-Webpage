@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Login Webpage</title>
+    <style>
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #1ca9c9, turquoise);
+            background-size: 400% 400%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+
+        .container {
+            width: 300px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(to right, #00FA9A, lightblue);
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        .greeting, .logout {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="container">
+    <div class="login-form">
+        <h2>Sign In</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="login()">Confirm</button>
+    </div>
+
+    <div class="greeting">
+        <h2 id="greetingMessage"></h2>
+        <button class-="logout" onclick="logout()">Log Out</button>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username && password) {
+            document.querySelector('.login-form').style.display = 'none';
+            document.querySelector(".greeting").style.display = "block";
+            document.getElementById("greetingMessage").textContent = `Welcome to my domain ${username} 👑`;
+        } else {
+            alert("Please re-enter both your username and password.");
+        }
+    }
+
+    function logout() {
+        document.querySelector(".greeting").style.display = "none";
+        document.querySelector(".login-form").style.display = "block";
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+    }
+</script>
+
+</body>
+</html>
